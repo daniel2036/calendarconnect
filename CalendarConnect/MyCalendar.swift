@@ -8,17 +8,17 @@
 import Foundation
 
 struct MyCalendar{
-    //set the current day
+    //v1 set the current day
     private(set) var today = Date()
     private(set) var currentDate: Date
     
-    //iso8601 is a calendar format?
+    //v1 iso8601 is a calendar format?
     private var calendar = Calendar(identifier: .iso8601)
     
     private let dateFormatter = DateFormatter()
     
     init(){
-        //timezone currently set to UTC
+        //v1 timezone currently set to UTC
         calendar.timeZone = TimeZone(identifier: "UTC")!
         dateFormatter.timeZone = TimeZone(identifier: "UTC")!
         dateFormatter.dateFormat = "yyyyMMdd"
@@ -27,8 +27,8 @@ struct MyCalendar{
         currentDate = dateFormatter.date(from: todayStr)!
     }
     
-    //format the day
-    //allow customizations for date format
+    //v1 format the day
+    //v1 allow customizations for date format
     mutating func setCurrentDate(to dateStr: String){
         let d = dateFormatter.date(from: dateStr)
         if let d {
@@ -36,7 +36,7 @@ struct MyCalendar{
         }
     }
     
-    //dates in the year
+    //v1 dates in the year
     func datesInYear() -> [Date] {
         let currentYear = calendar.component(.year, from: currentDate)
         let startOfYear = calendar.date(from: DateComponents(year: currentYear, month:1, day:1))
@@ -48,7 +48,7 @@ struct MyCalendar{
     }
 }
 
-//month year
+//v1 month year
 extension Date{
     func monthYYYY() -> String{
         return self.formatted(.dateTime .month(.wide) .year())

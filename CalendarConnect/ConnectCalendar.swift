@@ -10,7 +10,7 @@ import Foundation
 class ConnectCalendar: ObservableObject{
     @Published private var model = MyCalendar()
     
-    //returns today's date
+    //v1 returns today's date
     var currentDate: Date{
         return model.currentDate
     }
