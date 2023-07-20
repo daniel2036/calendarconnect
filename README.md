@@ -6,3 +6,6 @@ Version 1
 
 Version 2
 -transitioning to month calendar with every day of the current month displayed
+
+Version 3
+-still adjusting calendar UI
