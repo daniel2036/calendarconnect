@@ -46,6 +46,15 @@ struct MyCalendar{
         }
         return datesArrInYear
     }
+    
+    //v4 new func
+    func datesInWeek(from date:Date) -> [Date] {
+        let range = calendar.range(of: .weekday, in: .weekOfYear, for: date)!
+        let datesArrInWeek = range.compactMap {
+            calendar.date(byAdding: .day, value: $0 - 1, to:date)
+        }
+        return datesArrInWeek
+    }
 }
 
 //v1 month year
