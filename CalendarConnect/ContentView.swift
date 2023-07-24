@@ -57,14 +57,17 @@ struct ContentView: View {
 //            VStack(content: {
             
             //v4 make it so array only has one element
-            let today = Date()
+            //v5 comment let today out
+//            let today = Date()
             
             //v3 made 3 week arr, replaced "content" with "arr" in swipeable stack. rewrote swipeable stack
-            let arr = [today]
-            SwipeableStack(data: arr) { data in
-            //v4 weekview of:data. no longer list everything in array.
-                WeekView(of: data)
+            //v5 comment out today arr
+//            let arr = [today]
+            //v5 replace "data: arr" inside swipeable stack
+            SwipeableStack(data: connectCalendar.startDateOfWeeksInAYear()) {
+                date in WeekView(of: date)
             }
+            //v4 weekview of:data. no longer list everything in array.
 //            SwipeableStack(content: {
 //                WeekView()
 //                    .background(.cyan)

@@ -23,6 +23,11 @@ class ConnectCalendar: ObservableObject{
         model.datesInYear()
     }
     
+    //v5 function for start week with mondays
+    func startDateOfWeeksInAYear() -> [Date] {
+        model.startDateOfWeeksInAYear()
+    }
+    
     //v4 new func
     func datesInWeek(from date: Date) -> [Date] {
         model.datesInWeek(from: date)

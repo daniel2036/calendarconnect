@@ -11,6 +11,8 @@ struct MyCalendar{
     //v1 set the current day
     private(set) var today = Date()
     private(set) var currentDate: Date
+    //v5 variable for start of Year
+    private(set) var startOfYear: Date
     
     //v1 iso8601 is a calendar format?
     private var calendar = Calendar(identifier: .iso8601)
@@ -25,6 +27,10 @@ struct MyCalendar{
         
         let todayStr = dateFormatter.string(from: today)
         currentDate = dateFormatter.date(from: todayStr)!
+        
+        //v5 currentYear
+        let currentYear = calendar.component(.year, from: currentDate)
+        startOfYear = calendar.date(from: DateComponents(year: currentYear, month: 1, day: 1))!
     }
     
     //v1 format the day
@@ -47,13 +53,24 @@ struct MyCalendar{
         return datesArrInYear
     }
     
-    //v4 new func
+    //v4 new func to get dates in the week
     func datesInWeek(from date:Date) -> [Date] {
         let range = calendar.range(of: .weekday, in: .weekOfYear, for: date)!
         let datesArrInWeek = range.compactMap {
             calendar.date(byAdding: .day, value: $0 - 1, to:date)
         }
         return datesArrInWeek
+    }
+    
+    //v5 function to get mondays of the year (our calendar starts on monday each week)
+    func startDateOfWeeksInAYear() -> [Date] {
+        let currentWeek = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startOfYear)
+        let startOfWeek = calendar.date(from: currentWeek)
+        let range = calendar.range(of: .weekOfYear, in: .year, for: startOfYear)!
+        let startOfWeekArr = range.compactMap {
+            calendar.date(byAdding: .weekOfYear, value: $0, to: startOfWeek!)
+        }
+        return startOfWeekArr
     }
 }
 
