@@ -9,3 +9,6 @@ Version 2
 
 Version 3
 -still adjusting calendar UI
+
+Version 4
+-calendar for the whole year with dates and days of the week. each week starts on monday
